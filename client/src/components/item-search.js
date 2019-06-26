@@ -21,7 +21,7 @@ const ItemSearch = ({ onSelect = () => {} }) => {
   const search = useCallback(
     debounce(val => {
       setLoading(true)
-      if (val) {
+      if (val && val.length > 1) {
         const getItems = async () => {
           try {
             const result = await axios.get(
@@ -69,7 +69,7 @@ const ItemSearch = ({ onSelect = () => {} }) => {
                 marginLeft: 10
               }}
             >
-              {item.year} - {item.type.replace('feature', 'movie')}
+              {item.year} - {item.type && item.type.replace('feature', 'movie')}
             </span>
           </MenuItem>
         )}
