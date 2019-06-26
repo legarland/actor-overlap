@@ -13,10 +13,7 @@
         "ecmaVersion": 2018
     },
     "rules": {
-        "indent": [
-            "error",
-            "spaces"
-        ],
+        "indent": ["error", 2],
         "quotes": [
             "error",
             "single"
