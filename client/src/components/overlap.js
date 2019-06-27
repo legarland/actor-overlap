@@ -4,22 +4,18 @@ import ItemSearch from './item-search'
 import OverlapResults from './overlap-results'
 
 const ActorOverlap = () => {
-  const [firstId, setFirstId] = useState()
-  const [secondId, setSecondId] = useState()
+  const [first, setFirst] = useState({})
+  const [second, setSecond] = useState({})
 
   return (
     <div>
       <div>
-        <ItemSearch key="first" onSelect={id => setFirstId(id)} />
-        <br />
-        {firstId}
+        <ItemSearch key="first" onSelect={item => setFirst(item)} />
       </div>
       <div>
-        <ItemSearch key="second" onSelect={id => setSecondId(id)} />
-        <br />
-        {secondId}
+        <ItemSearch key="second" onSelect={item => setSecond(item)} />
       </div>
-      <OverlapResults firstId={firstId} secondId={secondId} />
+      <OverlapResults first={first} second={second} />
     </div>
   )
 }

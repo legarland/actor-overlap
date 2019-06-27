@@ -56,7 +56,10 @@ const ItemSearch = ({ onSelect = () => {} }) => {
         }}
         onSelect={(val, item) => {
           setValue(item.title)
-          onSelect(val)
+          onSelect({
+            title: item.title,
+            id: item.id
+          })
         }}
         renderItem={(item, isHighlighted) => (
           <MenuItem
