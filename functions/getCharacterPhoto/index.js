@@ -11,9 +11,14 @@ module.exports = async function (context, req) {
 
   const result = await axios.get(`https://www.imdb.com${req.query.link}`)
   const $ = cheerio.load(result.data)
-  const url = $('.titlecharacters-image-grid__thumbnail-link').first().find('img').attr('src')
+  const img = $('.titlecharacters-image-grid__thumbnail-link').first().find('img')
+  const src = img.attr('src')
+  const srcset = img.attr('srcset')
 
   return {
-    body: {url}
+    body: {
+      src,
+      srcset
+    }
   }
 }

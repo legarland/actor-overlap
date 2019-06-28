@@ -1,3 +1,11 @@
+:root {
+  font-size: 14px;
+}
+
+*, html {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 20px;

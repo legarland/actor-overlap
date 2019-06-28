@@ -3,14 +3,29 @@ import AutoComplete from 'react-autocomplete'
 import axios from 'axios'
 import debounce from 'lodash/debounce'
 import styled from 'styled-components'
+import TextBox from '../style/textbox'
 
 const MenuItem = styled.div`
-  padding: 5px 10px;
+  padding: 10px 10px;
   display: flex;
   justify-content: space-between;
   &.isHighlighted {
     background-color: lightgoldenrodyellow;
   }
+`
+
+const Menu = styled.div`
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-top: none;
+  border: 1px solid #e2d8f0;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 0;
+  font-size: 90%;
+  position: fixed;
+  overflow: auto;
+  max-height: 50%;
 `
 
 const ItemSearch = ({ onSelect = () => {} }) => {
@@ -45,39 +60,61 @@ const ItemSearch = ({ onSelect = () => {} }) => {
   )
 
   return (
-    <>
-      <AutoComplete
-        getItemValue={item => item.id}
-        items={data}
-        value={value}
-        onChange={(e, v) => {
-          search(v)
-          setValue(v)
-        }}
-        onSelect={(val, item) => {
-          setValue(item.title)
-          onSelect({
-            title: item.title,
-            id: item.id
-          })
-        }}
-        renderItem={(item, isHighlighted) => (
-          <MenuItem
-            key={item.id}
-            className={isHighlighted ? 'isHighlighted' : ''}
+    <AutoComplete
+      getItemValue={item => item.id}
+      items={data}
+      value={value}
+      onChange={(e, v) => {
+        search(v)
+        setValue(v)
+      }}
+      wrapperStyle={{
+        display: 'block'
+      }}
+      renderMenu={(items, value, style) =>
+        items.length ? <Menu style={style} children={items} /> : <div />
+      }
+      menuStyle={
+        {
+          // TODO: don't cheat, let it flow to the bottom
+        }
+      }
+      renderInput={props => {
+        const { ref, ...rest } = props
+        return (
+          <TextBox
+            {...rest}
+            ref={ref}
+            style={{ textAlign: 'center' }}
+            placeholder="Type a movie/show"
+            value={value}
+          />
+        )
+      }}
+      onSelect={(val, item) => {
+        setValue(item.title)
+        onSelect({
+          title: item.title,
+          id: item.id,
+          image: item.image
+        })
+      }}
+      renderItem={(item, isHighlighted) => (
+        <MenuItem
+          key={item.id}
+          className={isHighlighted ? 'isHighlighted' : ''}
+        >
+          <span>{item.title}</span>
+          <span
+            style={{
+              marginLeft: 10
+            }}
           >
-            <span>{item.title}</span>
-            <span
-              style={{
-                marginLeft: 10
-              }}
-            >
-              {item.year} - {item.type && item.type.replace('feature', 'movie')}
-            </span>
-          </MenuItem>
-        )}
-      />
-    </>
+            {item.year} - {item.type && item.type.replace('feature', 'movie')}
+          </span>
+        </MenuItem>
+      )}
+    />
   )
 }
 

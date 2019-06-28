@@ -1,17 +1,41 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import CharacterImage from './character-image'
+
+const Container = styled.div`
+  display: flex;
+`
+
+const Character = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+`
 
 const OverlapResult = ({ first, second, characters, name, image }) => {
-  console.log(characters)
-  console.log(first)
+  const firstCharacter = characters[first.id]
+  const secondCharacter = characters[second.id]
+
   return (
-    <div>
-      {name}
-      <img src={image} />
-      {`${first.title} ${characters[first.id] &&
-        characters[first.id].name}`} -{' '}
-      {`${second.title} ${characters[second.id] && characters[second.id].name}`}
-    </div>
+    <>
+      <Character>
+        {`${firstCharacter && firstCharacter.name}`}{' '}
+        {firstCharacter && firstCharacter.link && (
+          <CharacterImage link={firstCharacter.link} />
+        )}
+      </Character>
+      <Character>
+        {name}
+        <img src={image} alt="" />
+      </Character>
+      <Character>
+        {`${secondCharacter && secondCharacter.name}`}
+        {secondCharacter && secondCharacter.link && (
+          <CharacterImage link={secondCharacter.link} />
+        )}
+      </Character>
+    </>
   )
 }
 

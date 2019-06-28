@@ -28,7 +28,8 @@ module.exports = async function (context, req) {
     const name = link.text().trim()
     const id = link.attr('href').replace('/name/','')
 
-    if (type.toLowerCase().indexOf('actor') !== -1 || type.toLowerCase().indexOf('actress') !== -1) {
+    const types = ['actor','actress','producer','director']
+    if (types.some(t => type.toLowerCase().indexOf(t) !== -1)) {
       actorDataPromises.push(axios.get(`https://www.imdb.com/name/${id}/`))
       returnData.push({
         name,

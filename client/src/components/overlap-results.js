@@ -1,45 +1,49 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
-import OverlapResult from './overlap-result'
+import { apiUrl } from '../config'
+import Button from '../style/button'
 
-const OverlapResults = ({ first, second }) => {
+const GetOverlap = ({
+  first = {
+    title: 'Holes',
+    id: 'tt0311289',
+    image:
+      'https://m.media-amazon.com/images/M/MV5BMTg0MTU5ODkwM15BMl5BanBnXkFtZTYwMzgxNzY3._V1_.jpg'
+  },
+  second = {
+    title: 'Transformers',
+    id: 'tt0418279',
+    image:
+      'https://m.media-amazon.com/images/M/MV5BNDg1NTU2OWEtM2UzYi00ZWRmLWEwMTktZWNjYWQ1NWM1OThjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg'
+  },
+  onResults = () => {}
+}) => {
   const [loading, setLoading] = useState(false)
-  const [data, setData] = useState([])
+
+  const load = () => {
+    setLoading(true)
+    axios
+      .get(`${apiUrl}/getOverlap?ids=${first.id},${second.id}`)
+      .then(result => {
+        console.log(result.data.data)
+        onResults(result.data.data)
+        setLoading(false)
+      })
+      .catch(err => {
+        setLoading(false)
+        onResults([])
+      })
+  }
 
   return (
-    <div>
-      <button
-        disabled={!first || !second}
-        type="button"
-        onClick={() => {
-          setLoading(true)
-          axios
-            .get(
-              `http://localhost:7071/api/getOverlap?ids=${first.id},${second.id}`
-            )
-            .then(result => {
-              setData(result.data.data)
-              console.log(result.data.data)
-            })
-            .catch(err => {
-              setData([])
-              setLoading(false)
-            })
-        }}
-      >
-        Search
-      </button>
-      {data.map(result => (
-        <OverlapResult
-          key={result.name}
-          first={first}
-          second={second}
-          {...result}
-        />
-      ))}
-    </div>
+    <Button
+      disabled={!first || !second || loading}
+      type="button"
+      onClick={load}
+    >
+      {loading ? 'Scraping IMDB...' : 'Find Matches'}
+    </Button>
   )
 }
 
-export default OverlapResults
+export default GetOverlap

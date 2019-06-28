@@ -1,12 +1,18 @@
 import React from 'react'
-import ItemSearch from './components/item-search'
+import styled from 'styled-components'
 import ActorOverlap from './components/overlap'
+
+const Container = styled.div`
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+`
 
 function App() {
   return (
-    <div>
+    <Container>
       <ActorOverlap />
-    </div>
+    </Container>
   )
 }
 
