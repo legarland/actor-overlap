@@ -41,7 +41,7 @@ const GetOverlap = ({
       type="button"
       onClick={load}
     >
-      {loading ? 'Scraping IMDB...' : 'Find Matches'}
+      {loading ? 'Searching IMDB...' : 'Find Matches'}
     </Button>
   )
 }

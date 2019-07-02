@@ -4,7 +4,7 @@ import noPoster from '../images/no-poster.jpg'
 
 const Image = styled.img`
   width: 100%;
-  max-width: 30%;
+  max-width: 50%;
   margin: 0 auto;
   display: block;
 

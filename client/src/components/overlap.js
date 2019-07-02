@@ -4,14 +4,18 @@ import ItemSearch from './item-search'
 import GetOverlap from './overlap-results'
 import OverlapResult from './overlap-result'
 import MoviePoster from './movie-poster'
+import Button from '../style/button'
+import CharacterName from '../style/character-name'
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 200px 1fr;
-  width: 100%;
+  grid-template-columns: 300px 200px 300px;
+  margin: 0 auto;
+  width: 800px;
+  /* width: 100%; */
 `
 const PosterContainer = styled.div`
-  padding: 20px;
+  padding: 20px 0;
 `
 
 const Padding = styled.div`
@@ -74,23 +78,49 @@ const ActorOverlap = () => {
       <Container>
         {/* <Inputs> */}
         <Padding>
-          <ItemSearch key="first" onSelect={item => setFirst(item)} />
+          {!data.length && (
+            <ItemSearch key="first" onSelect={item => setFirst(item)} />
+          )}
         </Padding>
-        <GetOverlap
-          onResults={results => setData(results)}
-          first={first}
-          second={second}
-        />
+        {!data.length ? (
+          <GetOverlap
+            onResults={results => setData(results)}
+            first={first}
+            second={second}
+          />
+        ) : (
+          <Button
+            onClick={() => {
+              setData([])
+              setFirst()
+              setSecond()
+            }}
+          >
+            Start New Search
+          </Button>
+        )}
         <Padding>
-          <ItemSearch key="second" onSelect={item => setSecond(item)} />
+          {!data.length && (
+            <ItemSearch key="second" onSelect={item => setSecond(item)} />
+          )}
         </Padding>
         {/* </Inputs> */}
         <PosterContainer>
-          <MoviePoster url={first.image} />
+          {first && (
+            <>
+              <CharacterName>{first.title}</CharacterName>
+              <MoviePoster url={first.image} />
+            </>
+          )}
         </PosterContainer>
         <div></div>
         <PosterContainer>
-          <MoviePoster url={second.image} />
+          {second && (
+            <>
+              <CharacterName>{second.title}</CharacterName>
+              <MoviePoster url={second.image} />
+            </>
+          )}
         </PosterContainer>
         {data.map(result => (
           <OverlapResult
