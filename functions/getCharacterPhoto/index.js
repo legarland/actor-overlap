@@ -12,13 +12,22 @@ module.exports = async function (context, req) {
   const result = await axios.get(`https://www.imdb.com${req.query.link}`)
   const $ = cheerio.load(result.data)
   const img = $('.titlecharacters-image-grid__thumbnail-link').first().find('img')
-  const src = img.attr('src')
-  const srcset = img.attr('srcset')
-
-  return {
-    body: {
-      src,
-      srcset
+  if (img.length) {
+    const src = img.attr('src')
+    const srcset = img.attr('srcset')
+  
+    return {
+      body: {
+        src,
+        srcset
+      }
+    }
+  }
+  else {
+    return {
+      body: {
+        src: 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB470041852_.png',
+      }
     }
   }
 }
