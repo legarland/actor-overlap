@@ -9,7 +9,7 @@ module.exports = async function (context, req) {
   }
 
   const q = req.query.search.toLowerCase()
-  let response = await axios.get(`https://v2.sg.media-imdb.com/suggestion/titles/${q.substring(0, 1)}/${q}.json`)
+  let response = await axios.get(`https://v2.sg.media-imdb.com/suggestion/${q.substring(0, 1)}/${q}.json`)
   return {
     body: { data: response.data.d.map(item => ({ id: item.id,
       title: item.l,
