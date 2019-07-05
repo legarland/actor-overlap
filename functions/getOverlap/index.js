@@ -28,15 +28,15 @@ module.exports = async function (context, req) {
     const name = link.text().trim()
     const id = link.attr('href').replace('/name/','')
 
-    const types = ['actor','actress','producer','director']
-    if (types.some(t => type.toLowerCase().indexOf(t) !== -1)) {
-      actorDataPromises.push(axios.get(`https://www.imdb.com/name/${id}/`))
-      returnData.push({
-        name,
-        id,
-        image
-      })
-    }
+    //const types = ['actor','actress','producer','director']
+    //if (types.some(t => type.toLowerCase().indexOf(t) !== -1)) {
+    actorDataPromises.push(axios.get(`https://www.imdb.com/name/${id}/`))
+    returnData.push({
+      name,
+      id,
+      image
+    })
+    //}
   })
 
   const promises = await Promise.all(ids.map(id => axios.get(`https://www.imdb.com/title/${id}/fullcredits?ref_=tt_cl_sm#cast`)))
@@ -56,7 +56,8 @@ module.exports = async function (context, req) {
         ...actor,
         characters: {
           ...actor.characters,
-          [showId]: { name: characterName, link: characterLink }
+          [showId]: { name: characterName,
+link: characterLink }
         }
       }
     })
