@@ -10,18 +10,20 @@ import AniamtedReel from './animated-reel'
 
 const ActorOverlap = () => {
   const [loading, setLoading] = useState(false)
-  const [first, setFirst] = useState({
-    title: 'Holes',
-    id: 'tt0311289',
-    image:
-      'https://m.media-amazon.com/images/M/MV5BMTg0MTU5ODkwM15BMl5BanBnXkFtZTYwMzgxNzY3._V1_.jpg'
-  })
-  const [second, setSecond] = useState({
-    title: 'Transformers',
-    id: 'tt0418279',
-    image:
-      'https://m.media-amazon.com/images/M/MV5BNDg1NTU2OWEtM2UzYi00ZWRmLWEwMTktZWNjYWQ1NWM1OThjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg'
-  })
+  const [first, setFirst] = useState()
+  //   {
+  //   title: 'Holes',
+  //   id: 'tt0311289',
+  //   image:
+  //     'https://m.media-amazon.com/images/M/MV5BMTg0MTU5ODkwM15BMl5BanBnXkFtZTYwMzgxNzY3._V1_.jpg'
+  // }
+  const [second, setSecond] = useState()
+  //   {
+  //   title: 'Transformers',
+  //   id: 'tt0418279',
+  //   image:
+  //     'https://m.media-amazon.com/images/M/MV5BNDg1NTU2OWEtM2UzYi00ZWRmLWEwMTktZWNjYWQ1NWM1OThjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg'
+  // }
   const [data, setData] = useState([
     // {
     //   name: 'Shia LaBeouf',
