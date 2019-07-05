@@ -4,6 +4,7 @@ import axios from 'axios'
 import debounce from 'lodash/debounce'
 import styled from 'styled-components'
 import TextBox from '../style/textbox'
+import { apiUrl } from '../config'
 
 const MenuItem = styled.div`
   padding: 10px 10px;
@@ -41,7 +42,7 @@ const ItemSearch = ({ onSelect = () => {} }) => {
           try {
             const result = await axios.get(
               // `https://actor-overlap.azurewebsites.net/api/itemSearch?search=${value}`
-              `http://localhost:7071/api/itemSearch?search=${val}`
+              `${apiUrl}/itemSearch?search=${val}`
             )
             // console.log(result)
             setData(result.data.data)
