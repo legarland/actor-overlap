@@ -16,21 +16,25 @@ const GetOverlap = ({
     image:
       'https://m.media-amazon.com/images/M/MV5BNDg1NTU2OWEtM2UzYi00ZWRmLWEwMTktZWNjYWQ1NWM1OThjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg'
   },
-  onResults = () => {}
+  onResults = () => {},
+  isLoading = () => {}
 }) => {
   const [loading, setLoading] = useState(false)
 
   const load = () => {
     setLoading(true)
+    isLoading(true)
     axios
       .get(`${apiUrl}/getOverlap?ids=${first.id},${second.id}`)
       .then(result => {
         console.log(result.data.data)
         onResults(result.data.data)
         setLoading(false)
+        isLoading(false)
       })
       .catch(err => {
         setLoading(false)
+        isLoading(false)
         onResults([])
       })
   }

@@ -6,8 +6,10 @@ import MoviePoster from './movie-poster'
 import Button from '../style/button'
 import CharacterName from '../style/character-name'
 import './overlap.css'
+import AniamtedReel from './animated-reel'
 
 const ActorOverlap = () => {
+  const [loading, setLoading] = useState(false)
   const [first, setFirst] = useState({
     title: 'Holes',
     id: 'tt0311289',
@@ -65,7 +67,11 @@ const ActorOverlap = () => {
         </div>
         {!data.length ? (
           <GetOverlap
-            onResults={results => setData(results)}
+            isLoading={isLoading => setLoading(isLoading)}
+            onResults={results => {
+              setData(results)
+              setLoading(false)
+            }}
             first={first}
             second={second}
           />
@@ -85,7 +91,6 @@ const ActorOverlap = () => {
             <ItemSearch key="second" onSelect={item => setSecond(item)} />
           )}
         </div>
-        {/* </Inputs> */}
         <div className="py-6">
           {first && (
             <>
@@ -94,7 +99,9 @@ const ActorOverlap = () => {
             </>
           )}
         </div>
-        <div></div>
+        <div className="flex justify-center items-center">
+          {loading && <AniamtedReel />}
+        </div>
         <div className="py-6">
           {second && (
             <>
