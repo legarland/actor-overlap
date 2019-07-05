@@ -1,17 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const TextBox = styled.input`
-  padding: 0.5rem 1rem;
-  line-height: 1.5;
-  display: block;
-  width: 100%;
-  border: 1px solid #e2d8f0;
-  border-radius: 0.25rem;
-  appearance: none;
-  &:focus {
-    outline: 0;
-    /* box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5) !important; */
-  }
-`
+const TextBox = ({ style, placeholder, forwardedRef }) => (
+  <input
+    style={style}
+    placeholder={placeholder}
+    ref={forwardedRef}
+    type="text"
+    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+  />
+)
+
 export default TextBox

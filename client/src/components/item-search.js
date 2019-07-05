@@ -2,32 +2,7 @@ import React, { useState, useCallback } from 'react'
 import AutoComplete from 'react-autocomplete'
 import axios from 'axios'
 import debounce from 'lodash/debounce'
-import styled from 'styled-components'
-import TextBox from '../style/textbox'
 import { apiUrl } from '../config'
-
-const MenuItem = styled.div`
-  padding: 10px 10px;
-  display: flex;
-  justify-content: space-between;
-  &.isHighlighted {
-    background-color: lightgoldenrodyellow;
-  }
-`
-
-const Menu = styled.div`
-  border-bottom-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  border-top: none;
-  border: 1px solid #e2d8f0;
-  box-shadow: none;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2px 0;
-  font-size: 90%;
-  position: fixed;
-  overflow: auto;
-  max-height: 50%;
-`
 
 const ItemSearch = ({ onSelect = () => {} }) => {
   const [data, setData] = useState([])
@@ -65,6 +40,10 @@ const ItemSearch = ({ onSelect = () => {} }) => {
       getItemValue={item => item.id}
       items={data}
       value={value}
+      inputProps={{
+        className: 'textbox',
+        placeholder: 'Enter a Movie/Show'
+      }}
       onChange={(e, v) => {
         search(v)
         setValue(v)
@@ -73,25 +52,21 @@ const ItemSearch = ({ onSelect = () => {} }) => {
         display: 'block'
       }}
       renderMenu={(items, value, style) =>
-        items.length ? <Menu style={style} children={items} /> : <div />
+        items.length ? (
+          <div
+            style={style}
+            className="rounded-b-sm border border-gray-200 border-t-0 shadow fixed overflow-auto bg-white max-h-1/2"
+            children={items}
+          />
+        ) : (
+          <div />
+        )
       }
       menuStyle={
         {
           // TODO: don't cheat, let it flow to the bottom
         }
       }
-      renderInput={props => {
-        const { ref, ...rest } = props
-        return (
-          <TextBox
-            {...rest}
-            ref={ref}
-            style={{ textAlign: 'center' }}
-            placeholder="Type a movie/show"
-            value={value}
-          />
-        )
-      }}
       onSelect={(val, item) => {
         setValue(item.title)
         onSelect({
@@ -101,9 +76,11 @@ const ItemSearch = ({ onSelect = () => {} }) => {
         })
       }}
       renderItem={(item, isHighlighted) => (
-        <MenuItem
+        <div
           key={item.id}
-          className={isHighlighted ? 'isHighlighted' : ''}
+          className={`p-3 flex justify-between ${
+            isHighlighted ? 'bg-indigo-200' : ''
+          }`}
         >
           <span>{item.title}</span>
           <span
@@ -113,7 +90,7 @@ const ItemSearch = ({ onSelect = () => {} }) => {
           >
             {item.year} - {item.type && item.type.replace('feature', 'movie')}
           </span>
-        </MenuItem>
+        </div>
       )}
     />
   )

@@ -1,29 +1,11 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import ItemSearch from './item-search'
 import GetOverlap from './overlap-results'
 import OverlapResult from './overlap-result'
 import MoviePoster from './movie-poster'
 import Button from '../style/button'
 import CharacterName from '../style/character-name'
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 300px 200px 300px;
-  margin: 0 auto;
-  width: 800px;
-  /* width: 100%; */
-`
-const PosterContainer = styled.div`
-  padding: 20px 0;
-`
-
-const Padding = styled.div`
-  padding: 0 30px;
-  text-align: center;
-`
-
-const Movies = styled.div``
+import './overlap.css'
 
 const ActorOverlap = () => {
   const [first, setFirst] = useState({
@@ -39,49 +21,48 @@ const ActorOverlap = () => {
       'https://m.media-amazon.com/images/M/MV5BNDg1NTU2OWEtM2UzYi00ZWRmLWEwMTktZWNjYWQ1NWM1OThjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg'
   })
   const [data, setData] = useState([
-    {
-      name: 'Shia LaBeouf',
-      id: 'nm0479471',
-      image:
-        'https://m.media-amazon.com/images/M/MV5BMjFhNTM3NDItMDllNC00YzAyLThmY2QtYmViMjBjODJjODdiXkEyXkFqcGdeQXVyMDU5Njk5MQ@@._V1_UY209_CR4,0,140,209_AL_.jpg',
-      characters: {
-        tt0311289: {
-          name: 'Stanley',
-          link: '/title/tt0311289/characters/nm0479471?ref_=ttfc_fc_cl_t4'
-        },
-        tt0418279: {
-          name: 'Sam Witwicky',
-          link: '/title/tt0418279/characters/nm0479471?ref_=ttfc_fc_cl_t1'
-        }
-      }
-    },
-    {
-      name: 'Jon Voight',
-      id: 'nm0000685',
-      image:
-        'https://m.media-amazon.com/images/M/MV5BMTc2NTE3NDA3M15BMl5BanBnXkFtZTgwMDMyNTM1MjE@._V1_UY209_CR3,0,140,209_AL_.jpg',
-      characters: {
-        tt0311289: {
-          name: 'Mr. Sir',
-          link: '/title/tt0311289/characters/nm0000685?ref_=ttfc_fc_cl_t2'
-        },
-        tt0418279: {
-          name: 'Defense Secretary John Keller',
-          link: '/title/tt0418279/characters/nm0000685?ref_=ttfc_fc_cl_t7'
-        }
-      }
-    }
+    // {
+    //   name: 'Shia LaBeouf',
+    //   id: 'nm0479471',
+    //   image:
+    //     'https://m.media-amazon.com/images/M/MV5BMjFhNTM3NDItMDllNC00YzAyLThmY2QtYmViMjBjODJjODdiXkEyXkFqcGdeQXVyMDU5Njk5MQ@@._V1_UY209_CR4,0,140,209_AL_.jpg',
+    //   characters: {
+    //     tt0311289: {
+    //       name: 'Stanley',
+    //       link: '/title/tt0311289/characters/nm0479471?ref_=ttfc_fc_cl_t4'
+    //     },
+    //     tt0418279: {
+    //       name: 'Sam Witwicky',
+    //       link: '/title/tt0418279/characters/nm0479471?ref_=ttfc_fc_cl_t1'
+    //     }
+    //   }
+    // },
+    // {
+    //   name: 'Jon Voight',
+    //   id: 'nm0000685',
+    //   image:
+    //     'https://m.media-amazon.com/images/M/MV5BMTc2NTE3NDA3M15BMl5BanBnXkFtZTgwMDMyNTM1MjE@._V1_UY209_CR3,0,140,209_AL_.jpg',
+    //   characters: {
+    //     tt0311289: {
+    //       name: 'Mr. Sir',
+    //       link: '/title/tt0311289/characters/nm0000685?ref_=ttfc_fc_cl_t2'
+    //     },
+    //     tt0418279: {
+    //       name: 'Defense Secretary John Keller',
+    //       link: '/title/tt0418279/characters/nm0000685?ref_=ttfc_fc_cl_t7'
+    //     }
+    //   }
+    // }
   ])
 
   return (
     <>
-      <Container>
-        {/* <Inputs> */}
-        <Padding>
+      <div className="grid">
+        <div className="px-8">
           {!data.length && (
             <ItemSearch key="first" onSelect={item => setFirst(item)} />
           )}
-        </Padding>
+        </div>
         {!data.length ? (
           <GetOverlap
             onResults={results => setData(results)}
@@ -99,29 +80,29 @@ const ActorOverlap = () => {
             Start New Search
           </Button>
         )}
-        <Padding>
+        <div className="px-8">
           {!data.length && (
             <ItemSearch key="second" onSelect={item => setSecond(item)} />
           )}
-        </Padding>
+        </div>
         {/* </Inputs> */}
-        <PosterContainer>
+        <div className="py-6">
           {first && (
             <>
               <CharacterName>{first.title}</CharacterName>
               <MoviePoster url={first.image} />
             </>
           )}
-        </PosterContainer>
+        </div>
         <div></div>
-        <PosterContainer>
+        <div className="py-6">
           {second && (
             <>
               <CharacterName>{second.title}</CharacterName>
               <MoviePoster url={second.image} />
             </>
           )}
-        </PosterContainer>
+        </div>
         {data.map(result => (
           <OverlapResult
             key={result.name}
@@ -130,7 +111,7 @@ const ActorOverlap = () => {
             {...result}
           />
         ))}
-      </Container>
+      </div>
     </>
   )
 }

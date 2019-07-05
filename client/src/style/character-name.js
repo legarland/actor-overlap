@@ -1,9 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const CharacterName = styled.div`
-  font-weight: bold;
-  margin: 5px 0;
-  text-transform: uppercase;
-`
+const CharacterName = props => (
+  <div
+    {...props}
+    className="font-bold my-1 uppercase text-gray-900 text-center tracking-wide"
+  />
+)
+
 export default CharacterName

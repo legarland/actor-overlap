@@ -1,16 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const Button = styled.button`
-  color: #fff;
-  padding: 0.5rem 1rem;
-  font-weight: 700;
-  border-bottom: 4px solid #2b6cb0;
-  border-radius: 0.25rem;
-  background-color: #4299e1;
-  &[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`
+const Button = props => (
+  <button
+    type="button"
+    {...props}
+    className={`w-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-1 px-4 border-b-4 border-indigo-700 hover:border-indigo-500 rounded${
+      props.disabled ? ' opacity-50 cursor-not-allowed' : ''
+    }`}
+  />
+)
+
 export default Button

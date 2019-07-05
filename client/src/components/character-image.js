@@ -24,11 +24,12 @@ const CharacterImage = ({ link }) => {
   }, [link])
 
   return (
-    <div>
+    <div className="text-center">
       {loading ? (
         <span>Loading...</span>
       ) : (
         <img
+          className="inline-block"
           src={imgData.src}
           {...(imgData.srcset && { srcSet: imgData.srcset })}
           alt=""

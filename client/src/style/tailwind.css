@@ -1,0 +1,15 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+ :root {
+  font-size: 14px;
+}
+
+.textbox {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.textbox:focus {
+  @apply outline-none;
+}
