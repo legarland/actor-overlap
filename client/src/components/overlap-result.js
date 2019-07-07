@@ -7,12 +7,13 @@ const OverlapResult = ({ first, second, characters, name, image }) => {
   const secondCharacter = characters[second.id]
 
   return (
-    <>
-      <div className="flex items-end justify-center flex-column border-t-2 border-gray-400 mt-6 pt-6 relative">
+    <div class="result-grid">
+      <div className="flex items-end justify-center flex-column border-t-2 border-gray-400 mt-6 pt-6 relative char1">
         <div>
+          <CharacterName>{first.title}</CharacterName>
           {firstCharacter && <CharacterImage link={firstCharacter.link} />}
           <CharacterName>
-            {`${firstCharacter && firstCharacter.name}`}{' '}
+            {`${firstCharacter && firstCharacter.name}`}
           </CharacterName>
         </div>
         <svg
@@ -24,14 +25,15 @@ const OverlapResult = ({ first, second, characters, name, image }) => {
           <path d="M50.56 26.27l-14.34.67c-8.78.43-17.58.33-26.35 1.2a71.31 71.31 0 0 1-7.19.13 4.34 4.34 0 0 1-1.84-.39 2 2 0 0 1-.77-1.1 1.51 1.51 0 0 1 .79-1.58 10.75 10.75 0 0 1 1.87-.35c7-.39 14-.79 21.06-1.14 6.07-.3 12.14-.46 18.2-.85 5.43-.34 10.84-.67 16.28-.67 5 0 9.91-.16 14.87-.26 3.52-.08 7-.3 10.54-.25 5.11.08 10.22.34 15.33.56a4 4 0 0 1 1.35.45 2.09 2.09 0 0 1 .82 2.09 1.58 1.58 0 0 1-1.22 1.32 10.85 10.85 0 0 1-2.37.17c-8.47-.59-16.94-.26-25.41-.23H50.6v.18z" />
         </svg>
       </div>
-      <div className="border-t-2 border-gray-400 mt-6 pt-6">
+      <div className="border-t-2 border-gray-400 mt-6 pt-6 actor">
         <div className="text-center px-6">
           <img className="inline-block w-full" src={image} alt="" />
           <CharacterName>{name}</CharacterName>
         </div>
       </div>
-      <div className="flex items-end justify-center flex-column  border-t-2 border-gray-400 mt-6 pt-6 relative">
+      <div className="flex items-end justify-center flex-column  border-t-2 border-gray-400 mt-6 pt-6 relative char2">
         <div>
+          <CharacterName>{second.title}</CharacterName>
           {secondCharacter && <CharacterImage link={secondCharacter.link} />}
           <CharacterName>{`${secondCharacter &&
             secondCharacter.name}`}</CharacterName>
@@ -45,7 +47,7 @@ const OverlapResult = ({ first, second, characters, name, image }) => {
           <path d="M50.56 26.27l-14.34.67c-8.78.43-17.58.33-26.35 1.2a71.31 71.31 0 0 1-7.19.13 4.34 4.34 0 0 1-1.84-.39 2 2 0 0 1-.77-1.1 1.51 1.51 0 0 1 .79-1.58 10.75 10.75 0 0 1 1.87-.35c7-.39 14-.79 21.06-1.14 6.07-.3 12.14-.46 18.2-.85 5.43-.34 10.84-.67 16.28-.67 5 0 9.91-.16 14.87-.26 3.52-.08 7-.3 10.54-.25 5.11.08 10.22.34 15.33.56a4 4 0 0 1 1.35.45 2.09 2.09 0 0 1 .82 2.09 1.58 1.58 0 0 1-1.22 1.32 10.85 10.85 0 0 1-2.37.17c-8.47-.59-16.94-.26-25.41-.23H50.6v.18z" />
         </svg>
       </div>
-    </>
+    </div>
   )
 }
 

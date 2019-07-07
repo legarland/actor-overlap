@@ -1,6 +1,108 @@
-.grid {
+.grid, .result-grid, .poster-grid {
   display: grid;
   grid-template-columns: 300px 200px 300px;
   margin: 0 auto;
   width: 800px;
+}
+
+@media (max-width: 800px) {
+
+  .inset-y-arrow {
+    display: none;
+  }
+
+  .poster-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+                  "loader loader"
+                  "poster1 poster2";
+    width: 100%;
+  }
+
+  .poster-grid #movie1poster{
+    grid-area: poster1;
+    padding: .5rem 2rem;
+  }
+
+  .poster-grid #movie2poster{
+    grid-area: poster2;
+    padding: .5rem 2rem;
+  }
+  
+  .poster-grid #loader{
+    grid-area: loader;
+  }
+
+  #loader svg {
+    max-width: 30%;
+    margin-top: 2rem;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+                  "actor actor"
+                  "char1 char2";
+    width: 100%;
+  }
+
+  .result-grid > div.char1 {
+    grid-area: char1;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .result-grid > div.actor {
+    grid-area: actor;
+  }
+  
+  .result-grid > div.actor img {
+    max-width: 50%; 
+  }
+
+  .result-grid > div.char2 {
+    grid-area: char2;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;    
+  }
+
+  .grid > div {
+    flex: 1;
+    order: 999;
+  }
+
+  .grid > #movie1 {
+    order: 0;
+    margin-bottom: .5rem;
+  }
+
+  .grid > #movie2 {
+    order: 1;
+    margin-bottom: .5rem;
+  }
+
+  .grid > #button {
+    flex: 1;
+    order: 2;
+    padding: 0 2rem;
+  }
+
+  .new-search {
+    margin-top: -2rem
+  }
+
+  .grid > #movie1poster {
+    display: none;
+  }
+
+  .grid > #movie2poster {
+    display: none;
+  }
+
 }
