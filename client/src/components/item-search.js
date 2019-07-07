@@ -54,7 +54,7 @@ const ItemSearch = ({ onSelect = () => {} }) => {
       renderMenu={(items, value, style) =>
         items.length ? (
           <div
-            style={style}
+            style={{ ...style, zIndex: 1 }}
             className="rounded-b-sm border border-gray-200 border-t-0 shadow fixed overflow-auto bg-white max-h-1/2"
             children={items}
           />
