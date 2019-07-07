@@ -10,7 +10,6 @@ const OverlapResult = ({ first, second, characters, name, image }) => {
     <div class="result-grid">
       <div className="flex items-end justify-center flex-column border-t-2 border-gray-400 mt-6 pt-6 relative char1">
         <div>
-          <CharacterName>{first.title}</CharacterName>
           {firstCharacter && <CharacterImage link={firstCharacter.link} />}
           <CharacterName>
             {`${firstCharacter && firstCharacter.name}`}
@@ -33,7 +32,6 @@ const OverlapResult = ({ first, second, characters, name, image }) => {
       </div>
       <div className="flex items-end justify-center flex-column  border-t-2 border-gray-400 mt-6 pt-6 relative char2">
         <div>
-          <CharacterName>{second.title}</CharacterName>
           {secondCharacter && <CharacterImage link={secondCharacter.link} />}
           <CharacterName>{`${secondCharacter &&
             secondCharacter.name}`}</CharacterName>
