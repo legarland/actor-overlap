@@ -110,7 +110,7 @@ const ActorOverlap = () => {
           )}
         </div>
         <div className="flex justify-center items-center" id="loader">
-          {!loading && <AniamtedReel />}
+          {loading && <AniamtedReel />}
           {!loading && searched && (
             <div style={{ margin: '1rem 0' }}>
               Your search returned {data.length}{' '}
