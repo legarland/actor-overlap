@@ -1,20 +1,15 @@
 import React from 'react'
-import CharacterImage from './character-image'
 import CharacterName from '../style/character-name'
+import Character from './character'
 
 const OverlapResult = ({ first, second, characters, name, image }) => {
   const firstCharacter = characters[first.id]
   const secondCharacter = characters[second.id]
 
   return (
-    <div class="result-grid">
+    <div className="result-grid">
       <div className="flex items-end justify-center flex-column border-t-2 border-gray-400 mt-6 pt-6 relative char1">
-        <div>
-          {firstCharacter && <CharacterImage link={firstCharacter.link} />}
-          <CharacterName>
-            {`${firstCharacter && firstCharacter.name}`}
-          </CharacterName>
-        </div>
+        <Character name={firstCharacter.name} link={firstCharacter.link} />
         <svg
           className="fill-current text-indigo-500 rotate-1/2 absolute h-8 inset-y-arrow right-0"
           xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +26,7 @@ const OverlapResult = ({ first, second, characters, name, image }) => {
         </div>
       </div>
       <div className="flex items-end justify-center flex-column  border-t-2 border-gray-400 mt-6 pt-6 relative char2">
-        <div>
-          {secondCharacter && <CharacterImage link={secondCharacter.link} />}
-          <CharacterName>{`${secondCharacter &&
-            secondCharacter.name}`}</CharacterName>
-        </div>
+        <Character name={secondCharacter.name} link={secondCharacter.link} />
         <svg
           className="fill-current text-indigo-500 arrow-left absolute h-8 left-0 inset-y-arrow"
           xmlns="http://www.w3.org/2000/svg"

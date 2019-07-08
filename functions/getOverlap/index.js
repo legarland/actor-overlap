@@ -14,7 +14,7 @@ module.exports = async function (context, req) {
     return {
       status: 400,
       body: 'Need more than one ID'
-    } 
+    }
   }
 
   const result = await axios.get(`https://www.imdb.com/search/name/?roles=${req.query.ids}`)
@@ -26,7 +26,7 @@ module.exports = async function (context, req) {
     const image = $(el).parent().prev().find('img').attr('src')
     const link = $(el).find('a')
     const name = link.text().trim()
-    const id = link.attr('href').replace('/name/','')
+    const id = link.attr('href').replace('/name/', '')
 
     //const types = ['actor','actress','producer','director']
     //if (types.some(t => type.toLowerCase().indexOf(t) !== -1)) {
@@ -34,14 +34,15 @@ module.exports = async function (context, req) {
     returnData.push({
       name,
       id,
-      image
+      image,
+      link: link.attr('href')
     })
     //}
   })
 
   const promises = await Promise.all(ids.map(id => axios.get(`https://www.imdb.com/title/${id}/fullcredits?ref_=tt_cl_sm#cast`)))
-  promises.forEach((result,i) => {
-    
+  promises.forEach((result, i) => {
+
     const $show = cheerio.load(result.data)
     const showId = ids[i]
     returnData = returnData.map(actor => {
@@ -50,14 +51,16 @@ module.exports = async function (context, req) {
       let characterLinkEl = actorName.find('a[href*="characters"]')
       let characterName = characterLinkEl.text().trim()
       let characterLink = ''
-      if (!characterName) characterName = actorName.text().trim()  
+      if (!characterName) characterName = actorName.text().trim()
       else characterLink = characterLinkEl.attr('href')
       return {
         ...actor,
         characters: {
           ...actor.characters,
-          [showId]: { name: characterName,
-link: characterLink }
+          [showId]: {
+            name: characterName,
+            link: characterLink
+          }
         }
       }
     })

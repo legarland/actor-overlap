@@ -35,7 +35,7 @@
 
   #loader svg {
     max-width: 30%;
-    margin-top: 2rem;
+    margin: 1rem 0;
   }
 
   .result-grid {
