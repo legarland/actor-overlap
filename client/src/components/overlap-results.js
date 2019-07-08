@@ -27,7 +27,6 @@ const GetOverlap = ({
     axios
       .get(`${apiUrl}/getOverlap?ids=${first.id},${second.id}`)
       .then(result => {
-        console.log(result.data.data)
         onResults(result.data.data)
         setLoading(false)
         isLoading(false)
