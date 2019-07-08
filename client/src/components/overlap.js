@@ -10,6 +10,7 @@ import AniamtedReel from './animated-reel'
 
 const ActorOverlap = () => {
   const [loading, setLoading] = useState(false)
+  const [searched, setSearched] = useState(false)
   const [first, setFirst] = useState(
     // {
     //   title: 'Holes',
@@ -74,6 +75,7 @@ const ActorOverlap = () => {
             <GetOverlap
               isLoading={isLoading => setLoading(isLoading)}
               onResults={results => {
+                setSearched(true)
                 setData(results)
                 setLoading(false)
               }}
@@ -84,6 +86,7 @@ const ActorOverlap = () => {
               <Button
                 id="clear-button"
                 onClick={() => {
+                  setSearched(false)
                   setData([])
                   setFirst()
                   setSecond()
@@ -100,22 +103,23 @@ const ActorOverlap = () => {
         </div>
       </div>
       <div class="poster-grid">
-        <div className="py-6" id="movie1poster">
+        <div className="pt-8 pb-4" id="movie1poster">
           {first && (
             <>
-              <CharacterName>{first.title}</CharacterName>
               <MoviePoster url={first.image} />
+              <CharacterName>{first.title}</CharacterName>
             </>
           )}
         </div>
         <div className="flex justify-center items-center" id="loader">
           {loading && <AniamtedReel />}
+          {!loading && searched && <div style={{ margin: '1rem 0'}}>Your search returned {data.length} {data.length === 1 ? 'result' : 'results'}</div>}
         </div>
-        <div className="py-6" id="movie2poster">
+        <div className="pt-8 pb-4" id="movie2poster">
           {second && (
             <>
-              <CharacterName>{second.title}</CharacterName>
               <MoviePoster url={second.image} />
+              <CharacterName>{second.title}</CharacterName>
             </>
           )}
         </div>
