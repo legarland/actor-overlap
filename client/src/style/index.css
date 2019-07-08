@@ -7573,8 +7573,21 @@ video {
   line-height: 1.25;
 }
 
+.textbox.inline-loader {
+  background-image: url('../images/loader.svg');
+  background-size: 20px 20px;
+  background-position: right 5px center;
+  background-repeat: no-repeat;
+}
+
 .textbox:focus {
   outline: 0;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg)
+  }
 }
 
 @media (min-width: 640px) {

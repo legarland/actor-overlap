@@ -10,6 +10,20 @@
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 
+.textbox.inline-loader {
+  background-image: url('../images/loader.svg');
+  background-size: 20px 20px;
+  background-position: right 5px center;
+  background-repeat: no-repeat;
+}
+
 .textbox:focus {
   @apply outline-none;
+}
+
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg)
+  }
 }

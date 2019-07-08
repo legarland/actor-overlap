@@ -11,7 +11,7 @@ const ItemSearch = ({ onSelect = () => {} }) => {
 
   const search = useCallback(
     debounce(val => {
-      setLoading(true)
+      // setLoading(true)
       if (val && val.length > 1) {
         const getItems = async () => {
           try {
@@ -41,10 +41,12 @@ const ItemSearch = ({ onSelect = () => {} }) => {
       items={data}
       value={value}
       inputProps={{
-        className: 'textbox',
+        className: `textbox ${loading ? 'inline-loader': ''}`,
         placeholder: 'Enter a Movie/Show'
       }}
       onChange={(e, v) => {
+        if (!loading) setLoading(true)
+        if (!v && loading) setLoading(false)
         search(v)
         setValue(v)
       }}
