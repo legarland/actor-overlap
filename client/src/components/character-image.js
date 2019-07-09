@@ -29,7 +29,7 @@ const CharacterImage = ({ link }) => {
         <span>Loading...</span>
       ) : (
         <img
-          className="inline-block"
+          className="inline-block rounded-full"
           src={imgData.src}
           {...(imgData.srcset && { srcSet: imgData.srcset })}
           alt=""

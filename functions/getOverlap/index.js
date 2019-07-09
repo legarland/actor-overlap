@@ -28,16 +28,13 @@ module.exports = async function (context, req) {
     const name = link.text().trim()
     const id = link.attr('href').replace('/name/', '')
 
-    //const types = ['actor','actress','producer','director']
-    //if (types.some(t => type.toLowerCase().indexOf(t) !== -1)) {
     actorDataPromises.push(axios.get(`https://www.imdb.com/name/${id}/`))
     returnData.push({
       name,
       id,
-      image,
+      image: image.indexOf('nopicture') !== -1 ? image.replace('.png', 'V1_SY200_CR38,0,150,200_AL_.png') : image,
       link: link.attr('href')
     })
-    //}
   })
 
   const promises = await Promise.all(ids.map(id => axios.get(`https://www.imdb.com/title/${id}/fullcredits?ref_=tt_cl_sm#cast`)))
@@ -46,9 +43,13 @@ module.exports = async function (context, req) {
     const $show = cheerio.load(result.data)
     const showId = ids[i]
     returnData = returnData.map(actor => {
-      const actorName = $show(`a[href*="${actor.id}"]`).parent().parent().find('.character,.credit')
+      if (!actor) return undefined
+      const tableRows = $show('.cast_list tr:first-child').nextUntil('tr:not([class])')
+      const actorLink = tableRows.find(`a[href*="${actor.id}"]`)
+      if (!actorLink.length) return undefined
+      const actorName = actorLink.parent().parent().find('.character,.credit')
       actorName.find('a[class*="episodes"]').remove()
-      let characterLinkEl = actorName.find('a[href*="characters"]')
+      let characterLinkEl = actorName.find('a[href*="characters"]').first()
       let characterName = characterLinkEl.text().trim()
       let characterLink = ''
       if (!characterName) characterName = actorName.text().trim()
@@ -66,6 +67,6 @@ module.exports = async function (context, req) {
     })
   })
   return {
-    body: { data: returnData }
+    body: { data: returnData.filter(rd => rd !== undefined) }
   }
 }

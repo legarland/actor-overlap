@@ -6,7 +6,7 @@ const AniamtedReel = () => (
     id="reel"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 612.038 612.037"
-    className="w-1/2 fill-current text-gray-900"
+    className="w-1/2 fill-current text-white"
     // style="enable-background:new 0 0 612.038 612.037;"
   >
     <g>

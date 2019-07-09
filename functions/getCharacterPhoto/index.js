@@ -26,7 +26,7 @@ module.exports = async function (context, req) {
   else {
     return {
       body: {
-        src: 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB470041852_.png',
+        src: 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB470041852_._V1_SY100_CR38,0,100,100_AL_.png',
       }
     }
   }

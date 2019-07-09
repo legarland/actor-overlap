@@ -21,12 +21,12 @@
 
   .poster-grid #movie1poster{
     grid-area: poster1;
-    padding: .5rem 2rem;
+    padding: 1.5rem 2rem 0 2rem;
   }
 
   .poster-grid #movie2poster{
     grid-area: poster2;
-    padding: .5rem 2rem;
+    padding: 1.5rem 2rem 0 2rem;
   }
   
   .poster-grid #loader{
