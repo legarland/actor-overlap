@@ -1,11 +1,11 @@
 .grid, .result-grid, .poster-grid {
   display: grid;
-  grid-template-columns: 300px 200px 300px;
+  grid-template-columns: 350px 200px 350px;
   margin: 0 auto;
-  width: 800px;
+  width: 900px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 
   .inset-y-arrow {
     display: none;
@@ -29,6 +29,11 @@
     padding: 1.5rem 2rem 0 2rem;
   }
   
+  .poster-grid img {
+    position: sticky;
+    top: 0;
+  }
+
   .poster-grid #loader{
     grid-area: loader;
   }
@@ -79,12 +84,12 @@
 
   .grid > #movie1 {
     order: 0;
-    margin-bottom: .5rem;
+    margin-bottom: 1.5rem;
   }
 
   .grid > #movie2 {
     order: 1;
-    margin-bottom: .5rem;
+    margin-bottom: 1.5rem;
   }
 
   .grid > #button {
@@ -92,17 +97,4 @@
     order: 2;
     padding: 0 2rem;
   }
-
-  .new-search {
-    margin-top: -2rem
-  }
-
-  .grid > #movie1poster {
-    display: none;
-  }
-
-  .grid > #movie2poster {
-    display: none;
-  }
-
 }

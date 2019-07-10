@@ -3,7 +3,7 @@ import React from 'react'
 const CharacterName = ({ large, ...props }) => (
   <div
     {...props}
-    className={`font-bold my-1 uppercase text-white text-center tracking-wide leading-tight ${
+    className={`font-condensed font-bold mb-3 text-white text-center text-xl ${
       large ? 'text-2xl' : ''
     }`}
   />

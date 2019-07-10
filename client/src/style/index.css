@@ -584,15 +584,15 @@ video {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .container {
-    max-width: 800px;
+    max-width: 900px;
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .container {
-    max-width: 1100px;
+    max-width: 1200px;
   }
 }
 
@@ -5940,10 +5940,10 @@ video {
 }
 
 .inset-arrow {
-  top: 43%;
-  right: 43%;
-  bottom: 43%;
-  left: 43%;
+  top: 50%;
+  right: 50%;
+  bottom: 50%;
+  left: 50%;
 }
 
 .inset-y-0 {
@@ -5967,13 +5967,13 @@ video {
 }
 
 .inset-y-arrow {
-  top: 43%;
-  bottom: 43%;
+  top: 50%;
+  bottom: 50%;
 }
 
 .inset-x-arrow {
-  right: 43%;
-  left: 43%;
+  right: 50%;
+  left: 50%;
 }
 
 .top-0 {
@@ -6009,19 +6009,19 @@ video {
 }
 
 .top-arrow {
-  top: 43%;
+  top: 50%;
 }
 
 .right-arrow {
-  right: 43%;
+  right: 50%;
 }
 
 .bottom-arrow {
-  bottom: 43%;
+  bottom: 50%;
 }
 
 .left-arrow {
-  left: 43%;
+  left: 50%;
 }
 
 .resize-none {
@@ -7761,23 +7761,33 @@ body {
 }
 
 .textbox {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  /* @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight; */
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border-width: 1px;
-  border-radius: 0.25rem;
+  background-color: transparent;
+  border-style: none;
   width: 100%;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  color: #4a5568;
-  line-height: 1.25;
-  font-size: 16px;
+  font-family: Roboto Condensed, sans-serif;
+  color: #faf089;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-align: center;
 }
 
-.textbox.inline-loader {
+.textbox.valid {
+  color: #fff;
+}
+
+.textbox::placeholder {
+  opacity: 1;
+}
+
+.textbox:focus::placeholder {
+  color: transparent;
+}
+
+.inline-loader {
   background-image: url('../images/loader.svg');
   background-size: 20px 20px;
   background-position: right 5px center;
@@ -13161,10 +13171,10 @@ body {
   }
 
   .sm\:inset-arrow {
-    top: 43%;
-    right: 43%;
-    bottom: 43%;
-    left: 43%;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
   }
 
   .sm\:inset-y-0 {
@@ -13188,13 +13198,13 @@ body {
   }
 
   .sm\:inset-y-arrow {
-    top: 43%;
-    bottom: 43%;
+    top: 50%;
+    bottom: 50%;
   }
 
   .sm\:inset-x-arrow {
-    right: 43%;
-    left: 43%;
+    right: 50%;
+    left: 50%;
   }
 
   .sm\:top-0 {
@@ -13230,19 +13240,19 @@ body {
   }
 
   .sm\:top-arrow {
-    top: 43%;
+    top: 50%;
   }
 
   .sm\:right-arrow {
-    right: 43%;
+    right: 50%;
   }
 
   .sm\:bottom-arrow {
-    bottom: 43%;
+    bottom: 50%;
   }
 
   .sm\:left-arrow {
-    left: 43%;
+    left: 50%;
   }
 
   .sm\:resize-none {
@@ -14963,7 +14973,7 @@ body {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .md\:appearance-none {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -20302,10 +20312,10 @@ body {
   }
 
   .md\:inset-arrow {
-    top: 43%;
-    right: 43%;
-    bottom: 43%;
-    left: 43%;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
   }
 
   .md\:inset-y-0 {
@@ -20329,13 +20339,13 @@ body {
   }
 
   .md\:inset-y-arrow {
-    top: 43%;
-    bottom: 43%;
+    top: 50%;
+    bottom: 50%;
   }
 
   .md\:inset-x-arrow {
-    right: 43%;
-    left: 43%;
+    right: 50%;
+    left: 50%;
   }
 
   .md\:top-0 {
@@ -20371,19 +20381,19 @@ body {
   }
 
   .md\:top-arrow {
-    top: 43%;
+    top: 50%;
   }
 
   .md\:right-arrow {
-    right: 43%;
+    right: 50%;
   }
 
   .md\:bottom-arrow {
-    bottom: 43%;
+    bottom: 50%;
   }
 
   .md\:left-arrow {
-    left: 43%;
+    left: 50%;
   }
 
   .md\:resize-none {
@@ -22104,7 +22114,7 @@ body {
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .lg\:appearance-none {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -27443,10 +27453,10 @@ body {
   }
 
   .lg\:inset-arrow {
-    top: 43%;
-    right: 43%;
-    bottom: 43%;
-    left: 43%;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
   }
 
   .lg\:inset-y-0 {
@@ -27470,13 +27480,13 @@ body {
   }
 
   .lg\:inset-y-arrow {
-    top: 43%;
-    bottom: 43%;
+    top: 50%;
+    bottom: 50%;
   }
 
   .lg\:inset-x-arrow {
-    right: 43%;
-    left: 43%;
+    right: 50%;
+    left: 50%;
   }
 
   .lg\:top-0 {
@@ -27512,19 +27522,19 @@ body {
   }
 
   .lg\:top-arrow {
-    top: 43%;
+    top: 50%;
   }
 
   .lg\:right-arrow {
-    right: 43%;
+    right: 50%;
   }
 
   .lg\:bottom-arrow {
-    bottom: 43%;
+    bottom: 50%;
   }
 
   .lg\:left-arrow {
-    left: 43%;
+    left: 50%;
   }
 
   .lg\:resize-none {
@@ -34584,10 +34594,10 @@ body {
   }
 
   .xl\:inset-arrow {
-    top: 43%;
-    right: 43%;
-    bottom: 43%;
-    left: 43%;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
   }
 
   .xl\:inset-y-0 {
@@ -34611,13 +34621,13 @@ body {
   }
 
   .xl\:inset-y-arrow {
-    top: 43%;
-    bottom: 43%;
+    top: 50%;
+    bottom: 50%;
   }
 
   .xl\:inset-x-arrow {
-    right: 43%;
-    left: 43%;
+    right: 50%;
+    left: 50%;
   }
 
   .xl\:top-0 {
@@ -34653,19 +34663,19 @@ body {
   }
 
   .xl\:top-arrow {
-    top: 43%;
+    top: 50%;
   }
 
   .xl\:right-arrow {
-    right: 43%;
+    right: 50%;
   }
 
   .xl\:bottom-arrow {
-    bottom: 43%;
+    bottom: 50%;
   }
 
   .xl\:left-arrow {
-    left: 43%;
+    left: 50%;
   }
 
   .xl\:resize-none {

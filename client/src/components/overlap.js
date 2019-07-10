@@ -11,6 +11,7 @@ import AniamtedReel from './animated-reel'
 const ActorOverlap = () => {
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
+  const [shouldClear, setShouldClear] = useState(false)
   const [first, setFirst] = useState()
   //   {
   //   title: 'Holes',
@@ -64,21 +65,27 @@ const ActorOverlap = () => {
     <>
       <div className="grid">
         <div className="px-8" id="movie1">
-          {!data.length && (
-            <ItemSearch key="first" onSelect={item => setFirst(item)} />
-          )}
+          <ItemSearch
+            key="first"
+            onSelect={item => setFirst(item)}
+            valid={!!first}
+            searched={searched}
+            clear={shouldClear}
+          />
         </div>
         <div id="button" className={`${data.length && 'new-search'}`}>
-          {!data.length ? (
+          {!searched ? (
             <GetOverlap
               isLoading={isLoading => setLoading(isLoading)}
               onResults={results => {
                 setSearched(true)
+                setShouldClear(false)
                 setData(results)
                 setLoading(false)
               }}
               first={first}
               second={second}
+              loading={loading}
             />
           ) : (
             <Button
@@ -88,6 +95,7 @@ const ActorOverlap = () => {
                 setData([])
                 setFirst()
                 setSecond()
+                setShouldClear(true)
               }}
             >
               Start New Search
@@ -95,9 +103,13 @@ const ActorOverlap = () => {
           )}
         </div>
         <div className="px-8" id="movie2">
-          {!data.length && (
-            <ItemSearch key="second" onSelect={item => setSecond(item)} />
-          )}
+          <ItemSearch
+            key="second"
+            onSelect={item => setSecond(item)}
+            valid={!!second}
+            searched={searched}
+            clear={shouldClear}
+          />
         </div>
       </div>
       <div className="poster-grid">
@@ -105,7 +117,7 @@ const ActorOverlap = () => {
           {first && (
             <>
               <MoviePoster url={first.image} />
-              <CharacterName>{first.title}</CharacterName>
+              {/* <CharacterName>{first.title}</CharacterName> */}
             </>
           )}
         </div>
@@ -113,7 +125,6 @@ const ActorOverlap = () => {
           className="flex justify-center items-center text-white text-center"
           id="loader"
         >
-          {loading && <AniamtedReel />}
           {!loading && searched && (
             <div style={{ margin: '1rem 0' }}>
               <div className="uppercase tracking-wide">search returned</div>
@@ -128,7 +139,7 @@ const ActorOverlap = () => {
           {second && (
             <>
               <MoviePoster url={second.image} />
-              <CharacterName>{second.title}</CharacterName>
+              {/* <CharacterName>{second.title}</CharacterName> */}
             </>
           )}
         </div>

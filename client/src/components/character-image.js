@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { apiUrl } from '../config'
 
-const CharacterImage = ({ link }) => {
+const CharacterImage = ({ link, ...props }) => {
   const [imgData, setImgData] = useState({
     src:
       'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB470041852_._V1_SY100_CR38,0,100,100_AL_.png'
@@ -24,7 +24,7 @@ const CharacterImage = ({ link }) => {
   }, [link])
 
   return (
-    <div className="text-center">
+    <div className="text-center" {...props}>
       {loading ? (
         <span>Loading...</span>
       ) : (

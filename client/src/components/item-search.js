@@ -1,13 +1,25 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import AutoComplete from 'react-autocomplete'
 import axios from 'axios'
 import debounce from 'lodash/debounce'
 import { apiUrl } from '../config'
 
-const ItemSearch = ({ onSelect = () => {} }) => {
+const ItemSearch = ({
+  onSelect = () => {},
+  valid = true,
+  clear = false,
+  searched = false
+}) => {
   const [data, setData] = useState([])
   const [value, setValue] = useState('')
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (clear) {
+      setValue('')
+      setData([])
+    }
+  }, [clear])
 
   const search = useCallback(
     debounce(val => {
@@ -41,8 +53,11 @@ const ItemSearch = ({ onSelect = () => {} }) => {
       items={data}
       value={value}
       inputProps={{
-        className: `textbox ${loading ? 'inline-loader': ''}`,
-        placeholder: 'Enter a Movie/Show'
+        className: `textbox ${loading ? 'inline-loader' : ''} ${
+          valid ? 'valid' : ''
+        }`,
+        placeholder: 'Enter a Movie/Show',
+        disabled: searched
       }}
       onChange={(e, v) => {
         if (!loading) setLoading(true)
@@ -51,7 +66,9 @@ const ItemSearch = ({ onSelect = () => {} }) => {
         setValue(v)
       }}
       wrapperStyle={{
-        display: 'block'
+        display: 'block',
+        paddingBottom: 10,
+        borderBottom: 'solid 1px lightblue'
       }}
       renderMenu={(items, value, style) =>
         items.length ? (

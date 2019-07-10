@@ -3,9 +3,15 @@ import CharacterImage from './character-image'
 import CharacterName from '../style/character-name'
 
 const Character = ({ name, link }) => (
-  <div>
-    <CharacterImage link={link} />
-    <CharacterName>
+  <div className="flex flex-col flex-1">
+    <CharacterName
+      style={{
+        flex: 2,
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center'
+      }}
+    >
       {name && !link && name}
       {name && link && (
         <a
@@ -17,6 +23,12 @@ const Character = ({ name, link }) => (
         </a>
       )}
     </CharacterName>
+    <CharacterImage
+      link={link}
+      style={{
+        flex: 7
+      }}
+    />
   </div>
 )
 

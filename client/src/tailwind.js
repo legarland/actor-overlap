@@ -23,15 +23,15 @@ module.exports = {
         '80': '20rem'
       },
       inset: {
-        arrow: '43%'
+        arrow: '50%'
       },
       maxWidth: {
         '1/2': '50%',
         '3/4': '65%'
       },
       screens: {
-        md: '800px',
-        lg: '1100px'
+        md: '900px',
+        lg: '1200px'
       },
       maxHeight: {
         '1/2': '50%'

@@ -8,7 +8,7 @@ const OverlapResult = ({ first, second, characters, name, image, link }) => {
 
   return (
     <div className="result-grid text-white">
-      <div className="flex items-center justify-center flex-column md:mt-6 py-6 relative char1 bg-black-opacity-25 rounded-l-xl">
+      <div className="flex items-center justify-center flex-col md:mt-6 py-6 relative char1 bg-black-opacity-25 rounded-l-xl">
         <Character name={firstCharacter.name} link={firstCharacter.link} />
         <svg
           className="fill-current text-white rotate-1/2 absolute h-8 inset-y-arrow right-0"
@@ -21,7 +21,6 @@ const OverlapResult = ({ first, second, characters, name, image, link }) => {
       </div>
       <div className="mt-6 py-6 actor bg-black-opacity-25">
         <div className="text-center px-6">
-          <img className="inline-block w-full rounded-lg" src={image} alt="" />
           <CharacterName>
             {link ? (
               <a
@@ -35,9 +34,14 @@ const OverlapResult = ({ first, second, characters, name, image, link }) => {
               name
             )}
           </CharacterName>
+          <img
+            className="inline-block max-w-full rounded-lg h-64 lg:h-auto"
+            src={image}
+            alt=""
+          />
         </div>
       </div>
-      <div className="flex items-center justify-center flex-column md:mt-6 py-6 relative char2 bg-black-opacity-25 rounded-r-xl">
+      <div className="flex items-center justify-center flex-col md:mt-6 py-6 relative char2 bg-black-opacity-25 rounded-r-xl">
         <Character name={secondCharacter.name} link={secondCharacter.link} />
         <svg
           className="fill-current text-white arrow-left absolute h-8 left-0 inset-y-arrow"
