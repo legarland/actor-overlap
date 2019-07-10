@@ -17,12 +17,13 @@ module.exports = async function (context, req) {
     }
   }
 
+  console.log('Getting overlap from common')
   const result = await axios.get(`https://www.imdb.com/search/name/?roles=${req.query.ids}`)
+  console.log('Done getting overlap')
   const $ = cheerio.load(result.data)
   let returnData = []
   const actorDataPromises = []
   $('.lister-item-header').each(async (i, el) => {
-    const type = $(el).next('.text-muted').text().trim()
     const image = $(el).parent().prev().find('img').attr('src')
     const link = $(el).find('a')
     const name = link.text().trim()
@@ -37,14 +38,17 @@ module.exports = async function (context, req) {
     })
   })
 
+  console.log('loading both movie pages')
   const promises = await Promise.all(ids.map(id => axios.get(`https://www.imdb.com/title/${id}/fullcredits?ref_=tt_cl_sm#cast`)))
+  console.log('done loading both movie promies')
   promises.forEach((result, i) => {
 
+    console.log('parsing movie' + i)
     const $show = cheerio.load(result.data)
     const showId = ids[i]
+    const tableRows = $show('.cast_list > tbody > tr').first().nextUntil('tr:not([class])')
     returnData = returnData.map(actor => {
       if (!actor) return undefined
-      const tableRows = $show('.cast_list tr:first-child').nextUntil('tr:not([class])')
       const actorLink = tableRows.find(`a[href*="${actor.id}"]`)
       if (!actorLink.length) return undefined
       const actorName = actorLink.parent().parent().find('.character,.credit')
