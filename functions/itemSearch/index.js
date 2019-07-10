@@ -15,6 +15,6 @@ module.exports = async function (context, req) {
       title: item.l,
       type: item.q,
       year: item.y,
-      image: item.i ? item.i.imageUrl : undefined })) }
+      image: item.i ? item.i.imageUrl.replace('.jpg', 'SY300.jpg') : undefined })) }
   }
 }

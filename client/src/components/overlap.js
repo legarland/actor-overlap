@@ -12,14 +12,14 @@ const ActorOverlap = () => {
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
   const [first, setFirst] = useState()
-  // {
+  //   {
   //   title: 'Holes',
   //   id: 'tt0311289',
   //   image:
   //     'https://m.media-amazon.com/images/M/MV5BMTg0MTU5ODkwM15BMl5BanBnXkFtZTYwMzgxNzY3._V1_.jpg'
   // })
   const [second, setSecond] = useState()
-  // {
+  //   {
   //   title: 'Transformers',
   //   id: 'tt0418279',
   //   image:
@@ -109,12 +109,18 @@ const ActorOverlap = () => {
             </>
           )}
         </div>
-        <div className="flex justify-center items-center" id="loader">
+        <div
+          className="flex justify-center items-center text-white text-center"
+          id="loader"
+        >
           {loading && <AniamtedReel />}
           {!loading && searched && (
             <div style={{ margin: '1rem 0' }}>
-              Your search returned {data.length}{' '}
-              {data.length === 1 ? 'result' : 'results'}
+              <div className="uppercase tracking-wide">search returned</div>
+              <div className="text-5xl">{data.length}</div>
+              <div className="uppercase tracking-wide">
+                {data.length === 1 ? 'result' : 'results'}
+              </div>
             </div>
           )}
         </div>
