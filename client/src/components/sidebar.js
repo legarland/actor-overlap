@@ -1,13 +1,18 @@
 import React from 'react'
+import logo from '../images/logo.png'
 
 const Sidebar = () => (
-  <div className="h-auto lg:inline lg:fixed lg:w-80 lg:h-screen bg-sidebar z-10 p-3 lg:p-6">
-    <div className="font-bold text-white tracking-wide uppercase text-xl text-center lg:mb-6">
-      Actor <span className="text-indigo-400">Overlap</span>
+  <div className="h-auto lg:inline lg:fixed lg:w-80 lg:h-screen bg-sidebar z-10 p-2 lg:px-8">
+    <div className="text-center lg:mb-6">
+      <img
+        className="max-w-full h-10 lg:h-16 inline-block"
+        src={logo}
+        alt="actor overlap logo"
+      />
     </div>
     <div className="hidden lg:inline">
       <div className="font-condensed font-bold text-2xl text-teal-300 leading-tight mb-6">
-        Ever wonder if two different movies share the same actors?
+        Ever wonder if 2 different movies share the same actors?
       </div>
       <div className="text-indigo-200">
         ActorOverlap is a passion project that stemmed from a friend of mine
