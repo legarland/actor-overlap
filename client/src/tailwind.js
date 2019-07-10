@@ -2,6 +2,10 @@ const map = require('lodash/map')
 
 module.exports = {
   theme: {
+    fontFamily: {
+      body: ['Roboto', 'sans-serif'],
+      condensed: ['Roboto Condensed', 'sans-serif']
+    },
     extend: {
       rotate: {
         '1/2': '180deg'
@@ -37,7 +41,8 @@ module.exports = {
       },
       backgroundColor: theme => ({
         ...theme('colors'),
-        'black-opacity-25': 'rgba(0,0,0,.25)'
+        'black-opacity-25': 'rgba(0,0,0,.25)',
+        sidebar: '#001743'
       })
     }
   },
