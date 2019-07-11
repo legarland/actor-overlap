@@ -7,6 +7,7 @@ import Button from '../style/button'
 import CharacterName from '../style/character-name'
 import './overlap.css'
 import AniamtedReel from './animated-reel'
+import MoviePlaceholder from './movie-placeholder'
 
 const ActorOverlap = () => {
   const [loading, setLoading] = useState(false)
@@ -114,12 +115,7 @@ const ActorOverlap = () => {
       </div>
       <div className="poster-grid">
         <div className="pt-8 pb-4" id="movie1poster">
-          {first && (
-            <>
-              <MoviePoster url={first.image} />
-              {/* <CharacterName>{first.title}</CharacterName> */}
-            </>
-          )}
+          {first ? <MoviePoster url={first.image} /> : <MoviePlaceholder />}
         </div>
         <div
           className="flex justify-center items-center text-white text-center"
@@ -136,12 +132,7 @@ const ActorOverlap = () => {
           )}
         </div>
         <div className="pt-8 pb-4" id="movie2poster">
-          {second && (
-            <>
-              <MoviePoster url={second.image} />
-              {/* <CharacterName>{second.title}</CharacterName> */}
-            </>
-          )}
+          {second ? <MoviePoster url={second.image} /> : <MoviePlaceholder />}
         </div>
       </div>
       {data.map(result => (

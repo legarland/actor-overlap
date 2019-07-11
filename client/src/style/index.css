@@ -996,6 +996,10 @@ video {
   background-color: rgba(0,0,0,.25);
 }
 
+.bg-black-opacity-50 {
+  background-color: rgba(0,0,0,.5);
+}
+
 .bg-sidebar {
   background-color: #001743;
 }
@@ -1376,6 +1380,10 @@ video {
   background-color: rgba(0,0,0,.25);
 }
 
+.hover\:bg-black-opacity-50:hover {
+  background-color: rgba(0,0,0,.5);
+}
+
 .hover\:bg-sidebar:hover {
   background-color: #001743;
 }
@@ -1754,6 +1762,10 @@ video {
 
 .focus\:bg-black-opacity-25:focus {
   background-color: rgba(0,0,0,.25);
+}
+
+.focus\:bg-black-opacity-50:focus {
+  background-color: rgba(0,0,0,.5);
 }
 
 .focus\:bg-sidebar:focus {
@@ -3780,6 +3792,22 @@ video {
 
 .h-64 {
   height: 16rem;
+}
+
+.h-72 {
+  height: 18rem;
+}
+
+.h-80 {
+  height: 20rem;
+}
+
+.h-88 {
+  height: 22rem;
+}
+
+.h-96 {
+  height: 24rem;
 }
 
 .h-auto {
@@ -8227,6 +8255,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .sm\:bg-black-opacity-50 {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .sm\:bg-sidebar {
     background-color: #001743;
   }
@@ -8607,6 +8639,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .sm\:hover\:bg-black-opacity-50:hover {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .sm\:hover\:bg-sidebar:hover {
     background-color: #001743;
   }
@@ -8985,6 +9021,10 @@ body {
 
   .sm\:focus\:bg-black-opacity-25:focus {
     background-color: rgba(0,0,0,.25);
+  }
+
+  .sm\:focus\:bg-black-opacity-50:focus {
+    background-color: rgba(0,0,0,.5);
   }
 
   .sm\:focus\:bg-sidebar:focus {
@@ -11011,6 +11051,22 @@ body {
 
   .sm\:h-64 {
     height: 16rem;
+  }
+
+  .sm\:h-72 {
+    height: 18rem;
+  }
+
+  .sm\:h-80 {
+    height: 20rem;
+  }
+
+  .sm\:h-88 {
+    height: 22rem;
+  }
+
+  .sm\:h-96 {
+    height: 24rem;
   }
 
   .sm\:h-auto {
@@ -15368,6 +15424,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .md\:bg-black-opacity-50 {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .md\:bg-sidebar {
     background-color: #001743;
   }
@@ -15748,6 +15808,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .md\:hover\:bg-black-opacity-50:hover {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .md\:hover\:bg-sidebar:hover {
     background-color: #001743;
   }
@@ -16126,6 +16190,10 @@ body {
 
   .md\:focus\:bg-black-opacity-25:focus {
     background-color: rgba(0,0,0,.25);
+  }
+
+  .md\:focus\:bg-black-opacity-50:focus {
+    background-color: rgba(0,0,0,.5);
   }
 
   .md\:focus\:bg-sidebar:focus {
@@ -18152,6 +18220,22 @@ body {
 
   .md\:h-64 {
     height: 16rem;
+  }
+
+  .md\:h-72 {
+    height: 18rem;
+  }
+
+  .md\:h-80 {
+    height: 20rem;
+  }
+
+  .md\:h-88 {
+    height: 22rem;
+  }
+
+  .md\:h-96 {
+    height: 24rem;
   }
 
   .md\:h-auto {
@@ -22509,6 +22593,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .lg\:bg-black-opacity-50 {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .lg\:bg-sidebar {
     background-color: #001743;
   }
@@ -22889,6 +22977,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .lg\:hover\:bg-black-opacity-50:hover {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .lg\:hover\:bg-sidebar:hover {
     background-color: #001743;
   }
@@ -23267,6 +23359,10 @@ body {
 
   .lg\:focus\:bg-black-opacity-25:focus {
     background-color: rgba(0,0,0,.25);
+  }
+
+  .lg\:focus\:bg-black-opacity-50:focus {
+    background-color: rgba(0,0,0,.5);
   }
 
   .lg\:focus\:bg-sidebar:focus {
@@ -25293,6 +25389,22 @@ body {
 
   .lg\:h-64 {
     height: 16rem;
+  }
+
+  .lg\:h-72 {
+    height: 18rem;
+  }
+
+  .lg\:h-80 {
+    height: 20rem;
+  }
+
+  .lg\:h-88 {
+    height: 22rem;
+  }
+
+  .lg\:h-96 {
+    height: 24rem;
   }
 
   .lg\:h-auto {
@@ -29650,6 +29762,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .xl\:bg-black-opacity-50 {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .xl\:bg-sidebar {
     background-color: #001743;
   }
@@ -30030,6 +30146,10 @@ body {
     background-color: rgba(0,0,0,.25);
   }
 
+  .xl\:hover\:bg-black-opacity-50:hover {
+    background-color: rgba(0,0,0,.5);
+  }
+
   .xl\:hover\:bg-sidebar:hover {
     background-color: #001743;
   }
@@ -30408,6 +30528,10 @@ body {
 
   .xl\:focus\:bg-black-opacity-25:focus {
     background-color: rgba(0,0,0,.25);
+  }
+
+  .xl\:focus\:bg-black-opacity-50:focus {
+    background-color: rgba(0,0,0,.5);
   }
 
   .xl\:focus\:bg-sidebar:focus {
@@ -32434,6 +32558,22 @@ body {
 
   .xl\:h-64 {
     height: 16rem;
+  }
+
+  .xl\:h-72 {
+    height: 18rem;
+  }
+
+  .xl\:h-80 {
+    height: 20rem;
+  }
+
+  .xl\:h-88 {
+    height: 22rem;
+  }
+
+  .xl\:h-96 {
+    height: 24rem;
   }
 
   .xl\:h-auto {

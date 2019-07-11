@@ -14,6 +14,12 @@ module.exports = {
         '72': '18rem',
         '80': '20rem'
       },
+      height: {
+        '72': '18rem',
+        '80': '20rem',
+        '88': '22rem',
+        '96': '24rem'
+      },
       margin: {
         '72': '18rem',
         '80': '20rem'
@@ -42,6 +48,7 @@ module.exports = {
       backgroundColor: theme => ({
         ...theme('colors'),
         'black-opacity-25': 'rgba(0,0,0,.25)',
+        'black-opacity-50': 'rgba(0,0,0,.5)',
         sidebar: '#001743'
       })
     }
