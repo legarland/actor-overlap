@@ -8,7 +8,8 @@ const ItemSearch = ({
   onSelect = () => {},
   valid = true,
   clear = false,
-  searched = false
+  searched = false,
+  onFocus = () => {}
 }) => {
   const [data, setData] = useState([])
   const [value, setValue] = useState('')
@@ -57,7 +58,11 @@ const ItemSearch = ({
           valid ? 'valid' : ''
         }`,
         placeholder: 'Enter a Movie/Show',
-        disabled: searched
+        onFocus: () => {
+          if (searched) {
+            onFocus()
+          }
+        }
       }}
       onChange={(e, v) => {
         if (!loading) setLoading(true)

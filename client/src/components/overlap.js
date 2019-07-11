@@ -61,6 +61,14 @@ const ActorOverlap = () => {
     // }
   ])
 
+  const clear = () => {
+    setSearched(false)
+    setData([])
+    setFirst()
+    setSecond()
+    setShouldClear(true)
+  }
+
   return (
     <>
       <div className="grid">
@@ -71,6 +79,7 @@ const ActorOverlap = () => {
             valid={!!first}
             searched={searched}
             clear={shouldClear}
+            onFocus={clear}
           />
         </div>
         <div id="button" className={`${data.length && 'new-search'}`}>
@@ -88,16 +97,7 @@ const ActorOverlap = () => {
               loading={loading}
             />
           ) : (
-            <Button
-              id="clear-button"
-              onClick={() => {
-                setSearched(false)
-                setData([])
-                setFirst()
-                setSecond()
-                setShouldClear(true)
-              }}
-            >
+            <Button id="clear-button" onClick={clear}>
               Start New Search
             </Button>
           )}
