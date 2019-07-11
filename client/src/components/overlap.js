@@ -110,6 +110,7 @@ const ActorOverlap = () => {
             valid={!!second}
             searched={searched}
             clear={shouldClear}
+            onFocus={clear}
           />
         </div>
       </div>
