@@ -1,5 +1,8 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
+const CacheService = require('../cache-service.js')
+const ttl = 60 * 60 * 100 // cache for 1 Hour
+const cache = new CacheService(ttl) // Create a new cache service instance
 
 module.exports = async function (context, req) {
   if (!req.query.ids) {
@@ -18,7 +21,7 @@ module.exports = async function (context, req) {
   }
 
   console.log('Getting overlap from common')
-  const result = await axios.get(`https://www.imdb.com/search/name/?roles=${req.query.ids}`)
+  const result = await cache.get(`https://www.imdb.com/search/name/?roles=${req.query.ids}` ,() => axios.get(`https://www.imdb.com/search/name/?roles=${req.query.ids}`))
   console.log('Done getting overlap')
   const $ = cheerio.load(result.data)
   let returnData = []
@@ -39,18 +42,19 @@ module.exports = async function (context, req) {
   })
 
   console.log('loading both movie pages')
-  const promises = await Promise.all(ids.map(id => axios.get(`https://www.imdb.com/title/${id}/fullcredits?ref_=tt_cl_sm#cast`)))
+  const promises = await Promise.all(ids.map(id => cache.get(`https://www.imdb.com/title/${id}/fullcredits?ref_=tt_cl_sm#cast`, () => axios.get(`https://www.imdb.com/title/${id}/fullcredits?ref_=tt_cl_sm#cast`))))
   console.log('done loading both movie promies')
   promises.forEach((result, i) => {
 
     console.log('parsing movie' + i)
     const $show = cheerio.load(result.data)
     const showId = ids[i]
-    const tableRows = $show('.cast_list > tbody > tr').first().nextUntil('tr:not([class])')
+    //const tableRows = $show('.cast_list > tbody > tr').first().nextUntil('tr:not([class])')
     returnData = returnData.map(actor => {
       if (!actor) return undefined
-      const actorLink = tableRows.find(`a[href*="${actor.id}"]`)
-      if (!actorLink.length) return undefined
+      const actorLink = $show(`a[href*="${actor.id}"]`)
+      const actorLinkRow = actorLink.parent().parent()
+      if (!actorLink.length || (!actorLinkRow.hasClass('even') && !actorLinkRow.hasClass('odd'))) return undefined
       const actorName = actorLink.parent().parent().find('.character,.credit')
       actorName.find('a[class*="episodes"]').remove()
       let characterLinkEl = actorName.find('a[href*="characters"]').first()

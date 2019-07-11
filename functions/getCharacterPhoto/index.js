@@ -1,5 +1,8 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
+const CacheService = require('../cache-service.js')
+const ttl = 60 * 60 * 100 // cache for 1 Hour
+const cache = new CacheService(ttl) // Create a new cache service instance
 
 module.exports = async function (context, req) {
   if (!req.query && !req.query.link) {
@@ -9,7 +12,7 @@ module.exports = async function (context, req) {
     }
   }
 
-  const result = await axios.get(`https://www.imdb.com${req.query.link}`)
+  const result = await cache.get(`https://www.imdb.com${req.query.link}`, () =>axios.get(`https://www.imdb.com${req.query.link}`))
   const $ = cheerio.load(result.data)
   const img = $('.titlecharacters-image-grid__thumbnail-link').first().find('img')
   if (img.length) {
