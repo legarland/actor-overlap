@@ -49,11 +49,12 @@ module.exports = async function (context, req) {
     console.log('parsing movie' + i)
     const $show = cheerio.load(result.data)
     const showId = ids[i]
-    const tableRows = $show('.cast_list > tbody > tr').first().nextUntil('tr:not([class])')
+    //const tableRows = $show('.cast_list > tbody > tr').first().nextUntil('tr:not([class])')
     returnData = returnData.map(actor => {
       if (!actor) return undefined
-      const actorLink = tableRows.find(`a[href*="${actor.id}"]`)
-      if (!actorLink.length) return undefined
+      const actorLink = $show(`a[href*="${actor.id}"]`)
+      const actorLinkRow = actorLink.parent().parent()
+      if (!actorLink.length || (!actorLinkRow.hasClass('even') && !actorLinkRow.hasClass('odd'))) return undefined
       const actorName = actorLink.parent().parent().find('.character,.credit')
       actorName.find('a[class*="episodes"]').remove()
       let characterLinkEl = actorName.find('a[href*="characters"]').first()
