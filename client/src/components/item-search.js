@@ -44,7 +44,7 @@ const ItemSearch = ({
         setData([])
         setLoading(false)
       }
-    }, 600),
+    }, 200),
     []
   )
 
