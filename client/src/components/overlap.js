@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
+// import AOS from 'aos'
+// import 'aos/dist/aos.css'
 import ItemSearch from './item-search'
 import GetOverlap from './overlap-results'
 import OverlapResult from './overlap-result'
@@ -8,6 +10,9 @@ import CharacterName from '../style/character-name'
 import './overlap.css'
 import AniamtedReel from './animated-reel'
 import MoviePlaceholder from './movie-placeholder'
+import LoadingMessage from './loading-message'
+
+// AOS.init({ disable: 'mobile' })
 
 const ActorOverlap = () => {
   const [loading, setLoading] = useState(false)
@@ -86,7 +91,9 @@ const ActorOverlap = () => {
         <div id="button" className={`${data.length && 'new-search'}`}>
           {!searched ? (
             <GetOverlap
-              isLoading={isLoading => setLoading(isLoading)}
+              isLoading={isLoading => {
+                setLoading(isLoading)
+              }}
               onResults={results => {
                 setSearched(true)
                 setShouldClear(false)
@@ -122,6 +129,7 @@ const ActorOverlap = () => {
           className="flex justify-center items-center text-white text-center"
           id="loader"
         >
+          {loading && <LoadingMessage delay={4000} />}
           {!loading && searched && (
             <div style={{ margin: '1rem 0' }}>
               <div className="uppercase tracking-wide">search returned</div>
