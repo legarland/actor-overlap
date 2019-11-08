@@ -18,6 +18,7 @@ const ActorOverlap = () => {
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
   const [shouldClear, setShouldClear] = useState(false)
+  const [secondShouldClear, setSecondShouldClear] = useState(false)
   const [first, setFirst] = useState()
   //   {
   //   title: 'Holes',
@@ -67,12 +68,27 @@ const ActorOverlap = () => {
     // }
   ])
 
-  const clear = () => {
-    setSearched(false)
+  const clearFirst = () => {
     setData([])
+    setSearched(false)
+    setFirst()
+    setShouldClear(true)
+  }
+
+  const clear = () => {
+    setData([])
+    setSearched(false)
     setFirst()
     setSecond()
     setShouldClear(true)
+    setSecondShouldClear(true)
+  }
+
+  const clearSecond = () => {
+    setData([])
+    setSearched(false)
+    setSecond()
+    setSecondShouldClear(true)
   }
 
   return (
@@ -85,7 +101,7 @@ const ActorOverlap = () => {
             valid={!!first}
             searched={searched}
             clear={shouldClear}
-            onFocus={clear}
+            onFocus={clearFirst}
           />
         </div>
         <div id="button" className={`${data.length && 'new-search'}`}>
@@ -97,6 +113,7 @@ const ActorOverlap = () => {
               onResults={results => {
                 setSearched(true)
                 setShouldClear(false)
+                setSecondShouldClear(false)
                 setData(results)
                 setLoading(false)
               }}
@@ -116,8 +133,8 @@ const ActorOverlap = () => {
             onSelect={item => setSecond(item)}
             valid={!!second}
             searched={searched}
-            clear={shouldClear}
-            onFocus={clear}
+            clear={secondShouldClear}
+            onFocus={clearSecond}
           />
         </div>
       </div>
