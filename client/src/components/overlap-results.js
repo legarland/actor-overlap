@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
+import ReactGA from 'react-ga'
 import { apiUrl } from '../config'
 import Button from '../style/button'
 
@@ -12,6 +13,9 @@ const GetOverlap = ({
   const [loading, setLoading] = useState(false)
 
   const load = () => {
+    ReactGA.pageview(
+      `${window.location.pathname}?title1=${first.title}&title2=${second.title}`
+    )
     setLoading(true)
     isLoading(true)
     axios

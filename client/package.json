@@ -10,6 +10,7 @@
     "react": "^16.8.6",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^16.8.6",
+    "react-ga": "^2.7.0",
     "react-reveal": "^1.2.2",
     "react-scripts": "3.0.1"
   },

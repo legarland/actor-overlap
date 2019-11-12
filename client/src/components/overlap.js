@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
+import ReactGA from 'react-ga'
 // import AOS from 'aos'
 // import 'aos/dist/aos.css'
 import ItemSearch from './item-search'
@@ -6,11 +7,12 @@ import GetOverlap from './overlap-results'
 import OverlapResult from './overlap-result'
 import MoviePoster from './movie-poster'
 import Button from '../style/button'
-import CharacterName from '../style/character-name'
 import './overlap.css'
-import AniamtedReel from './animated-reel'
 import MoviePlaceholder from './movie-placeholder'
 import LoadingMessage from './loading-message'
+
+ReactGA.initialize('UA-12696426-4')
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 // AOS.init({ disable: 'mobile' })
 
