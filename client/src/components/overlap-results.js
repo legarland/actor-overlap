@@ -16,6 +16,8 @@ const GetOverlap = ({
     ReactGA.pageview(
       `${window.location.pathname}?title1=${first.title}&title2=${second.title}`
     )
+    window.history.pushState('', '', `?title1=${first.id}&title2=${second.id}`)
+    // window.location.search = `?title1=${first.title}&title2=${second.title}`
     setLoading(true)
     isLoading(true)
     axios
