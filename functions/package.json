@@ -6,7 +6,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "cheerio": "^1.0.0-rc.3",
     "node-cache": "^4.2.0"
   },
