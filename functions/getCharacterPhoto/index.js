@@ -4,6 +4,15 @@ const CacheService = require('../cache-service.js')
 const ttl = 60 * 60 * 100 // cache for 1 Hour
 const cache = new CacheService(ttl) // Create a new cache service instance
 
+const axiosInstance = axios.create({
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Connection': 'keep-alive'
+  }
+})
+
 module.exports = async function (context, req) {
   if (!req.query && !req.query.link) {
     return {
@@ -12,9 +21,9 @@ module.exports = async function (context, req) {
     }
   }
 
-  const result = await cache.get(`https://www.imdb.com${req.query.link}`, () =>axios.get(`https://www.imdb.com${req.query.link}`))
+  const result = await cache.get(`https://www.imdb.com${req.query.link}`, () =>axiosInstance.get(`https://www.imdb.com${req.query.link}`))
   const $ = cheerio.load(result.data)
-  const img = $('.titlecharacters-image-grid__thumbnail-link').first().find('img')
+  const img = $('.ipc-image[alt="View Poster"]').first()
   if (img.length) {
     const src = img.attr('src')
     const srcset = img.attr('srcset')

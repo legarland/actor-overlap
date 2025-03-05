@@ -35,7 +35,7 @@ const OverlapResult = ({ first, second, characters, name, image, link }) => {
             )}
           </CharacterName>
           <img
-            className="inline-block max-w-full rounded-lg h-64 lg:h-auto"
+            className="inline-block max-w-full rounded-lg h-48"
             src={image}
             alt=""
           />
