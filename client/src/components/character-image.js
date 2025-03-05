@@ -29,11 +29,11 @@ const CharacterImage = ({ link, ...props }) => {
         <span>Loading...</span>
       ) : (
         <img
-          className="inline-block rounded-full"
+          className="inline-block"
           src={imgData.src}
           {...(imgData.srcset && { srcSet: imgData.srcset })}
           alt=""
-          style={{ minWidth: 140 }}
+          style={{ height: 100, maxWidth: 150 }}
         />
       )}
     </div>
